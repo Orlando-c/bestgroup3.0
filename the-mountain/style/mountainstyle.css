@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "pixeloid";
+  src: url("assets/pixeloid.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "humanoid";
+  src: url("assets/humanoid.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "tchocolate";
+  src: url("assets/chocolate.ttf") format("truetype");
+}
+
+html, body, input, textarea, select, button {
+  color: #0d007f;
+
+}
+body {
+  background: linear-gradient(to right, rgb(176, 40, 255), rgb(60, 180, 255), rgb(176, 40, 255));
+  height: 100%;
+  /*width: 100%;*/
+}
+
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-top: 50px;
+  }
+  
+  form {
+    margin-top: 50px;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: lightblue;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .comparison {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .text-block {
+    width: 45%;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .left {
+    border-right: 1px solid lightgray;
+  }
+  
+  .right {
+    margin-left: 20px;
+  }

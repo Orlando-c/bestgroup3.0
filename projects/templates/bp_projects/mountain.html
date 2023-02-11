@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var questions = [
+      "Make a legend about a hero!",
+      "Make a fantasy story!",
+      "Make a horror story!",
+      "Make a story about a creepy adventure through the forest!",
+      "Make a story about an adventure to the peak of a mountain!"
+    ];
+    var randomIndex = Math.floor(Math.random() * questions.length);
+    var randomQuestion = questions[randomIndex];
+    $("#prompt").text(randomQuestion);
+  });
+</script>
+</head>
+<body>
+<center><h1><div id="prompt"></div></h1></center>
+</body>
+</html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Are you smarter than an AI?</title>
+    <link rel="stylesheet" href="style/mountainstyle.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="font-family: tchocolate;">Fable Frontier</h1>
+      <div class="comparison">
+        <button onclick="myFunction()">Start</button>
+        <div class="text-block left">
+          <h2>The AI</h2>
+          <p>Tell me, what makes me human</p>
+        </div>
+        <div class="text-block right">
+          <h2>(Username)</h2>
+          <p>Tell me what makes me AI</p>
+        </div>
+        <button type="button">Submit your story!</button>
+        <div id="testy"></div>
+        <script src="API/openai.js"></script>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!--- 
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Text Comparison</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Create a Text Comparison Post</h1>
+      <form>
+        <label for="text1">Text 1:</label>
+        <textarea id="text1" name="text1"></textarea>
+        <label for="text2">Text 2:</label>
+        <textarea id="text2" name="text2"></textarea>
+        <input type="submit" value="Submit">
+      </form>
+      <div class="comparison">
+        <div class="text-block left">
+          <h2>Text 1</h2>
+          <p id="text1-output"></p>
+        </div>
+        <div class="text-block right">
+          <h2>Text 2</h2>
+          <p id="text2-output"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+https://platform.openai.com/examples/default-micro-horror?lang=python 
+
+https://platform.openai.com/examples/default-chat
+--->
