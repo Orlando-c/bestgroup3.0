@@ -43,6 +43,7 @@ def activate_job():
     initJokes()
     initUsers()
     initPlayers()
+    initSewers()
 
 # this runs the application on the development server
 if __name__ == "__main__":
