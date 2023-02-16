@@ -107,4 +107,8 @@ def initSewers():
     """Create database and tables"""
     db.create_all()
     """Tester data for table"""
+    u1 = Sewer(name='raisinbran25', score='2')
+    sewers = [u1]
+    for sewer in sewers:
+        sewer.create()
             
