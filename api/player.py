@@ -39,7 +39,7 @@ class PlayerAPI:
             if player:
                 return jsonify(player.read())
             # failure returns error
-            return {'message': f'Processed {name}, either a format error or User ID {uid} is duplicate'}, 210
+            return {'message': f'Processed {name}, either a format error or User ID {score} is duplicate'}, 210
 
     class _Read(Resource):
         def get(self):
