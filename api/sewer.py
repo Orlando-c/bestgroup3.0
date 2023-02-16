@@ -43,7 +43,7 @@ class SewerAPI:
 
     class _Read(Resource):
         def get(self):
-            sewer = Sewer.query.all()    # read/extract all users from database
+            sewers = Sewer.query.all()    # read/extract all users from database
             json_ready = [sewer.read() for sewer in sewers]  # prepare output in json
             return jsonify(json_ready)  # jsonify creates Flask response object, more specific to APIs than json.dumps
 
