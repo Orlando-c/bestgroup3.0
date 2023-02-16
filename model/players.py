@@ -108,12 +108,8 @@ def initPlayers():
     db.create_all()
     """Tester data for table"""
     p1 = Player(name='Orlando Carcamo', score='98')
-    p2 = Player(name='Jaden Nguyen', score='78')
-    p3 = Player(name='Max Tullius', score='99')
-    p4 = Player(name='Dylan Garrett', score='80')
-    p5 = Player(name='John Smith', score='65')
 
-    players = [p1, p2, p3, p4, p5]
+    players = [p1]
 
     """Builds sample user/note(s) data"""
     for player in players:
