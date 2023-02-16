@@ -107,11 +107,4 @@ def initPlayers():
     """Create database and tables"""
     db.create_all()
     """Tester data for table"""
-    p1 = Player(name='Orlando Carcamo', score='98')
-
-    players = [p1]
-
-    """Builds sample user/note(s) data"""
-    for player in players:
-        player.create()
             
