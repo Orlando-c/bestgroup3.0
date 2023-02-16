@@ -226,7 +226,11 @@ def initUsers():
                 '''fails with bad or duplicate data'''
                 db.session.remove()
                 print(f"Records exist, duplicate email, or error: {user.uid}")
+
             
+#ORLANDOS STUFF DONT TOUCH
+
+
 class Responses(db.Model):
     __tablename__ = 'responses'  # table name is plural, class name is singular
 
