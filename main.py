@@ -17,6 +17,7 @@ from api.joke import joke_api # Blueprint import api definition
 from api.user import user_api # Blueprint import api definition
 from api.player import player_api # Blueprint import api definition
 from api.sewer import sewer_api # Blueprint import api definition
+from api.jjjj import jjjj_api # Blueprint import api definition
 
 # setup App pages
 from projects.projects import app_projects # Blueprint directory import projects definition
