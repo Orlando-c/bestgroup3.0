@@ -19,7 +19,7 @@ from api.user import user_api # Blueprint import api definition
 from api.player import player_api # Blueprint import api definition
 from api.sewer import sewer_api # Blueprint import api definition
 from api.jjjj import jjjj_api # Blueprint import api definition
-from api.fable import fable_api # Blueprint import api definition
+# from api.fable import fable_api # Blueprint import api definition
 
 # setup App pages
 from projects.projects import app_projects # Blueprint directory import projects definition
@@ -31,7 +31,7 @@ app.register_blueprint(user_api) # register api routes
 app.register_blueprint(player_api) # register api routes
 app.register_blueprint(sewer_api) # register api routes
 app.register_blueprint(jjjj_api) # register api routes
-app.register_blueprint(fable_api) # register api routes
+# app.register_blueprint(fable_api) # register api routes
 app.register_blueprint(app_projects) # register app pages
 
 @app.errorhandler(404)  # catch for URL not found
