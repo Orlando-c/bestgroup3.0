@@ -119,7 +119,7 @@ def initFables():
     """Create database and tables"""
     db.create_all()
     """Tester data for table"""
-    u1 = Fable(username='raisinbran25', userbody='Hello Peter... welcome to fortnite')
+    u1 = Fable(username='raisinbran25', userbody='Hello Peter... welcome to fortnite', aibody='BHIAEFN')
     fables = [u1]
     for fable in fables:
         fable.create()
