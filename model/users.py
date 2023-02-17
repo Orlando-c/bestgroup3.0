@@ -78,16 +78,20 @@ class User(db.Model):
     _name = db.Column(db.String(255), unique=False, nullable=False)
     _uid = db.Column(db.String(255), unique=True, nullable=False)
     _password = db.Column(db.String(255), unique=False, nullable=False)
+    _owins = db.Column(db.Integer, unique=False, nullable=True)
+    _xwins = db.Column(db.Integer, unique=False, nullable=True)
     _dob = db.Column(db.Date)
 
     # Defines a relationship between User record and Notes table, one-to-many (one user to many notes)
     posts = db.relationship("Post", cascade='all, delete', backref='users', lazy=True)
 
     # constructor of a User object, initializes the instance variables within object (self)
-    def __init__(self, name, uid, password="123qwerty", dob=date.today()):
+    def __init__(self, name, uid, o_wins, x_wins, password="123qwerty", dob=date.today()):
         self._name = name    # variables with self prefix become part of the object, 
         self._uid = uid
         self.set_password(password)
+        self._owins = o_wins
+        self._xwins = x_wins
         self._dob = dob
 
     # a name getter method, extracts name from object
@@ -170,6 +174,8 @@ class User(db.Model):
             "name": self.name,
             "uid": self.uid,
             "dob": self.dob,
+            "o_wins": self._owins,
+            "x_wins": self._xwins,
             "age": self.age,
             "posts": [post.read() for post in self.posts]
         }
@@ -205,11 +211,11 @@ def initUsers():
         db.init_app(app)
         db.create_all()
         """Tester data for table"""
-        u1 = User(name='Thomas Edison', uid='toby', password='123toby', dob=date(1847, 2, 11))
-        u2 = User(name='Nicholas Tesla', uid='niko', password='123niko')
-        u3 = User(name='Alexander Graham Bell', uid='lex', password='123lex')
-        u4 = User(name='Eli Whitney', uid='whit', password='123whit')
-        u5 = User(name='John Mortensen', uid='jm1021', dob=date(1959, 10, 21))
+        u1 = User(name='Thomas Edison', uid='toby', password='123toby', o_wins="1", x_wins="2", dob=date(1847, 2, 11))
+        u2 = User(name='Nicholas Tesla', uid='niko', password='123niko', o_wins="1", x_wins="2")
+        u3 = User(name='Alexander Graham Bell', uid='lex', password='123lex', o_wins="1", x_wins="2")
+        u4 = User(name='Eli Whitney', uid='whit', password='123whit', o_wins="1", x_wins="2")
+        u5 = User(name='John Mortensen', uid='jm1021', o_wins="1", x_wins="2", dob=date(1959, 10, 21))
 
         users = [u1, u2, u3, u4, u5]
 
