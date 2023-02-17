@@ -92,6 +92,17 @@ class Fable(db.Model):
             "aibody": self.aibody
         }
 
+    # CRUD update: updates user name, password, phone
+    # returns self
+    def update(self, username="", userbody=""):
+        """only updates values with length"""
+        if len(username) > 0:
+            self.username = username
+        if len(userbody) > 0:
+            self.userbody = userbody
+        db.session.commit()
+        return self
+
     # CRUD delete: remove self
     # None
     def delete(self):
