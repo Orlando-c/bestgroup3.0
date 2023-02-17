@@ -94,12 +94,14 @@ class Fable(db.Model):
 
     # CRUD update: updates user name, password, phone
     # returns self
-    def update(self, username="", userbody=""):
+    def update(self, username="", userbody="", aibody=""):
         """only updates values with length"""
         if len(username) > 0:
             self.username = username
         if len(userbody) > 0:
             self.userbody = userbody
+        if len(aibody) > 0:
+            self.aibody = aibody
         db.session.commit()
         return self
 
