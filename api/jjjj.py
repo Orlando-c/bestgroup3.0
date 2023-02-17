@@ -2,15 +2,15 @@ from flask import Blueprint, request, jsonify
 from flask_restful import Api, Resource # used for REST API building
 from datetime import datetime
 
-from model.scores import Scores
+from model.jjjjs import Jjjjs
 
-score_api = Blueprint('score_api', __name__,
-                   url_prefix='/api/scores')
+jjjj_api = Blueprint('jjjj_api', __name__,
+                   url_prefix='/api/jjjjs')
 
 # API docs https://flask-restful.readthedocs.io/en/latest/api.html
-api = Api(score_api)
+api = Api(jjjj_api)
 
-class scoreAPI:        
+class JjjjAPI:        
     class _Create(Resource):
         def post(self):
             ''' Read data for json body '''
@@ -27,24 +27,24 @@ class scoreAPI:
                 return {'message': f'User ID is missing, or is less than 2 characters'}, 210
 
             ''' #1: Key code block, setup USER OBJECT '''
-            uo = score(name=name, 
+            uo = Jjjj(name=name, 
                       score=score)
             
             ''' Additional garbage error checking '''
             # set password if provided
             ''' #2: Key Code block to add user to database '''
             # create user in database
-            score = uo.create()
+            jjjj = uo.create()
             # success returns json of user
-            if score:
-                return jsonify(score.read())
+            if jjjj:
+                return jsonify(jjjj.read())
             # failure returns error
             return {'message': f'Processed {name}, either a format error or User ID {score} is duplicate'}, 210
 
     class _Read(Resource):
         def get(self):
-            scores = score.query.all()    # read/extract all users from database
-            json_ready = [score.read() for score in scores]  # prepare output in json
+            jjjjs = Jjjj.query.all()    # read/extract all users from database
+            json_ready = [jjjj.read() for jjjj in jjjjs]  # prepare output in json
             return jsonify(json_ready)  # jsonify creates Flask response object, more specific to APIs than json.dumps
 
     # building RESTapi endpoint
