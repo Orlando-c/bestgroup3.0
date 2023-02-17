@@ -1,45 +1,49 @@
-""" database dependencies to support sqliteDB examples """
-
+from random import randrange
+from datetime import date
+import os
+import base64
 import json
-from __init__ import app, db
-from sqlalchemy.exc import IntegrityError
 
-class Responses(db.Model):
-    __tablename__ = 'responses'  # table name is plural, class name is singular
+from app import app, db
+from sqlalchemy.exc import IntegrityError
+from werkzeug.security import generate_password_hash, check_password_hash
+
+class Player(db.Model):
+    __tablename__ = 'fables'
 
     id = db.Column(db.Integer, primary_key=True)
-    _username = db.Column(db.String(255), unique=True, nullable=False)
-    _aibody = db.Column(db.String(255), unique=False, nullable=False)
-    _userbody = db.Column(db.String(255), unique=False, nullable=False)
+    username = db.Column(db.String(255), unique=True, nullable=False)
+    userstory = db.Column(db.String(255), unique=False, nullable=False)
+    aistory = db.Column(db.String(255), unique=False, nullable=False)
 
-    def __init__(self, title, text, imageURL):
-        self._username = title
-        self._aibody = text
-        self._userbody = imageURL
+    def __init__(self, username, userstory, aistory):
+        self.username = username
+        self.userstory = userstory
+        self.aistory = aistory
 
     @property
     def username(self):
         return self._username
-  
+
     @username.setter
-    def username(self, title):
-        self._username = title
-  
+    def username(self, username):
+        self._username = username
+
     @property
-    def aibody(self):
-        return self._aibody
-  
-    @aibody.setter
-    def aibody(self, text):
-        self._aibody = text
-  
+    def userstory(self):
+        return self._userstory
+
+    @userstory.setter
+    def userstory(self, userstory):
+        self._userstory = userstory
+
     @property
-    def userbody(self):
-        return self._userbody
-  
-    @userbody.setter
-    def userbody(self, imageURL):
-        self._userbody = imageURL
+    def aistory(self):
+        return self._aistory
+
+    @aistory.setter
+    def aistory(self, aistory):
+        self._aistory = aistory
 
     def __str__(self):
         return json.dumps(self.read())
@@ -50,43 +54,31 @@ class Responses(db.Model):
             db.session.commit()
             return self
         except IntegrityError:
-            db.session.remove()
+            db.session.rollback()
             return None
 
     def read(self):
         return {
             "id": self.id,
-            "Username": self._username,
-            "AI Body": self._aibody,
-            "User Body": self._userbody
+            "username": self.username,
+            "user-story": self.userstory,
+            "AI-story": self.aistory,
         }
-  
-    def update(self, title="", text="", imageURL=""):
-        if len(title) > 0:
-            self._username = title
-        if len(text) > 0:
-            self._aibody = text
-        if len(imageURL) > 0:
-            self._userbody = imageURL
+
+    def update(self, username="", userstory=""):
+        if len(username) > 0:
+            self.username = username
+        if len(userstory) > 0:
+            self.userstory = userstory
         db.session.commit()
         return self
 
     def delete(self):
-        db.session.commit()
         db.session.delete(self)
+        db.session.commit()
         return None
 
+def initFables():
+    db.create_all()
 
-def initUsers():
-    with app.app_context():
-        db.init_app(app)
-        db.create_all()
-        u1 = Responses(title="New York City", text="Fortnite", imageURL="amomh.com")
-        u2 = Responses(title="S", text="Among", imageURL="fort.com")
-        users = [u1, u2]
-        for user in users:
-            try:
-                user.create()
-            except IntegrityError:
-                db.session.remove()
-                print(f"Duplicate or error: {user._username}")
+initFables()
