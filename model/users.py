@@ -215,8 +215,9 @@ def initUsers():
         u3 = User(name='Alexander Graham Bell', uid='lex', password='123lex', o_wins="1", x_wins="2")
         u4 = User(name='Eli Whitney', uid='whit', password='123whit', o_wins="1", x_wins="2")
         u5 = User(name='John Mortensen', uid='jm1021', o_wins="1", x_wins="2", dob=date(1959, 10, 21))
+        u6 = User(name='Max', uid='M', password='020107', o_wins="0", x_wins="1")
 
-        users = [u1, u2, u3, u4, u5]
+        users = [u1, u2, u3, u4, u5, u6]
 
         """Builds sample user/note(s) data"""
         for user in users:
